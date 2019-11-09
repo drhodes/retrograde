@@ -1,0 +1,52 @@
+* Retrograde: reimplemting code and passing tests as exercises
+This is a first stab at creating programming exercises by decomposing
+a finished program and incrementally removing functionality. The
+process starts with a finished program that has a suite of unit
+tests. In this example, the card game of War is used.
+
+Applications generally have a high point of composition that no other
+parts of the program depend upon. This is likely found in the main
+function. It might be a Main object, or App object, something like
+that.
+
+** Design of war
+War has the following rough composition: Game is concerned with
+Players and Decks. Decks are concerned with Cards, which have Ranks
+and Suits. Players have Hands and Hands have cards.
+
+*** Game
+- Deck
+  - Card
+    - Rank
+    - Suit
+- Player
+  - Hand
+    - Card
+
+** The Method 
+Remove functionality starting from the top. Nothing depends on Game,
+so the compiler can still be as a tool to type check the code base and
+run tests for the types below the level of Game. So the idea is to
+incrementally break the application in stages from top to bottom
+program while committing each stage with failing tests. This stage
+with failing test represents an exercise.
+
+Tests should only fail for the current exercise. So, to isolate test
+errors to each stage, an intermediate commit is made where the failing
+tests are commented out and the application compiles without any
+noise.
+
+For example, start with a working Deck of cards and remove its
+constructor then assign an exercise to rebuild a constructor that
+passes tests. Make a commit there. Tag it Exercise1. The tests will be
+failing because there is no constructor. Now comment out the failing
+tests. The code is compiling, no tests are failing. The project is
+broken, but, that's ok.
+
+For the next exercise, move onto the Card type, etc. continue working
+down the program type dependencies until the smallest type without no
+dependencies is reached.
+
+Fixing these failing tests at the bottom will be EXERCISE #1, the
+project is to fix all the broken tests, bottom up - exactly backward
+in the order the modules were broken, until the app works again.
