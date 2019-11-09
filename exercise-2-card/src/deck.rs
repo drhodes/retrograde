@@ -23,7 +23,7 @@ impl Deck {
 
     pub fn deal(&mut self, num_cards: usize) -> Vec<Card> {
         // panic if num_cards > self.cards.len
-        self.cards.split_off(num_cards)
+        self.cards.drain(0 .. num_cards).collect()
 
         // Is this a good design decision? Should the whole program
         // halt if Deck::deal is called with an out of range n?
