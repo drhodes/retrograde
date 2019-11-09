@@ -1,0 +1,16 @@
+for each of these exercises, enter the directory and use
+
+$ cargo test
+
+NOTE: cargo test can be run in the src directory also.
+
+to get an idea of what might be wrong, then edit the file indicated by
+the exercise directory name. For example,
+
+The directory: exercise-1-suit, requires modification of src/suit.rs
+                          ^^^^                               ^^^^
+
+That is the only file that needs to be modified, Search for TODO
+within the file and do what it suggests. When the tests run without
+failing and there are no errors the exercise is complete.
+
